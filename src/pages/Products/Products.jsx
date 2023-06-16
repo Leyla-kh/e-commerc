@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
+
 
 export default function Products() {
   const catId = parseInt(useParams().id);
@@ -49,7 +50,9 @@ export default function Products() {
               type="range"
               min={0}
               max={1000}
-              onChange={(e) => setMaxPrice(e.target.value)}
+              onChange={(e) =>
+                setMaxPrice(e.target.value > 0 ? e.target.value : 1)
+              }
             />
             <span>{maxPrice}</span>
           </div>

@@ -1,5 +1,4 @@
 import "./Navbar.scss";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -18,7 +17,7 @@ export default function Navbar() {
       <div className="wrapper">
         <div className="left">
           <div className="item">
-            <Link className="link" to="/products/1">
+            <Link className="link" to="/products/2">
               Men
             </Link>
           </div>
@@ -34,7 +33,7 @@ export default function Navbar() {
           </div>
           <div className="item">
             <Link className="link" to="/products/4">
-              Accessories
+              Shoes & Accessories
             </Link>
           </div>
         </div>

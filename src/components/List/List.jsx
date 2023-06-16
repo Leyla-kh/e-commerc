@@ -1,5 +1,6 @@
 import useFetch from "../../hooks/useFetch";
 import Card from "../Card/Card";
+import ProductSkeleton from "../ProductSkeleton/ProductSkeleton";
 import "./List.scss";
 
 export default function List({ catId, maxPrice, priceFilter, subCatSelected }) {
@@ -13,9 +14,16 @@ export default function List({ catId, maxPrice, priceFilter, subCatSelected }) {
 
   return (
     <div className="list">
-      {loading
-        ? "loading"
-        : data?.map((item) => <Card item={item} key={item.id} />)}
+      {loading ? (
+        <>
+          <ProductSkeleton />
+          <ProductSkeleton />
+          <ProductSkeleton />
+          <ProductSkeleton />
+        </>
+      ) : (
+        data?.map((item) => <Card item={item} key={item.id} />)
+      )}
     </div>
   );
 }

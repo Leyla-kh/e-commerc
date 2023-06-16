@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import "./FeaturedProducts.scss";
 import useFetch from "../../hooks/useFetch";
+import ProductSkeleton from "../ProductSkeleton/ProductSkeleton";
 
 export default function FeaturedProducts({ type }) {
   const { data, loading, error } = useFetch(
@@ -18,11 +19,18 @@ export default function FeaturedProducts({ type }) {
         </p>
       </div>
       <div className="bottom">
-        {error
-          ? "somthing went wrong"
-          : loading
-          ? "is Loading"
-          : data.map((item) => <Card item={item} key={item.id} />)}
+        {error ? (
+          "somthing went wrong"
+        ) : loading ? (
+          <>
+            <ProductSkeleton />
+            <ProductSkeleton />
+            <ProductSkeleton />
+            <ProductSkeleton />
+          </>
+        ) : (
+          data.map((item) => <Card item={item} key={item.id} />)
+        )}
       </div>
     </div>
   );
