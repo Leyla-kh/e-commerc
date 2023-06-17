@@ -6,10 +6,10 @@ export default function Categories() {
     <div className="categories">
       <div className="col">
         <div className="row">
-          <img src="image/men-style-3.jpg" alt="" />
+          <img src="image/women2-category.jpg" alt="" />
           <button>
             <Link className="link" to="/products/1">
-              test
+              Women
             </Link>
           </button>
         </div>
@@ -17,7 +17,7 @@ export default function Categories() {
           <img src="image/bag-category.jpg" alt="" />
           <button>
             <Link className="link" to="/products/1">
-              test
+              Bags
             </Link>
           </button>
         </div>
@@ -27,7 +27,7 @@ export default function Categories() {
           <img src="/image/men-styles-3.jpg" alt="" />
           <button>
             <Link className="link" to="/products/1">
-              test
+              Men
             </Link>
           </button>
         </div>
@@ -38,18 +38,18 @@ export default function Categories() {
             <div className="row">
               <img src="image/footwear.jpg" alt="" />
               <button>
-                <Link className="link" to="/products/1">
-                  test
+                <Link className="link" to="/products/4">
+                  Shoes
                 </Link>
               </button>
             </div>
           </div>
           <div className="col">
             <div className="row">
-              <img src="image/men-category.jpg" alt="" />
+              <img src="image/acc-collection1.jpg" alt="" />
               <button>
-                <Link className="link" to="/products/1">
-                  test
+                <Link className="link" to="/products/4">
+                  Accessories
                 </Link>
               </button>
             </div>
@@ -58,8 +58,8 @@ export default function Categories() {
         <div className="row">
           <img src="image/kids collection4.jpg" alt="" />
           <button>
-            <Link className="link" to="/products/1">
-              test
+            <Link className="link" to="/products/3">
+              Children
             </Link>
           </button>
         </div>
