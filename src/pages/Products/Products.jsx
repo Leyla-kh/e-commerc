@@ -4,16 +4,14 @@ import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
 
-
 export default function Products() {
-  const catId = parseInt(useParams().id);
+  const catId = useParams().id;
   const [maxPrice, setMaxPrice] = useState(1000);
   const [priceFilter, setPriceFilter] = useState("desc");
   const [subCatSelected, setSubCatSelected] = useState([]);
 
-  const { data, loading, error } = useFetch(
-    `/sub-categories?[filters][categories][id][$eq]=${catId}`
-  );
+  const { data, loading, error } = useFetch(`/categories?category=${catId}`);
+  const subs = data[0]?.subCategories;
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -30,15 +28,15 @@ export default function Products() {
       <div className="left">
         <div className="filterItem">
           <h2>Products Categories</h2>
-          {data?.map((item) => (
-            <div className="inputItem" key={item.id}>
+          {subs?.map((item, index) => (
+            <div className="inputItem" key={index}>
               <input
                 type="checkbox"
-                id={item.id}
-                value={item.id}
+                id={index}
+                value={index}
                 onChange={handleChange}
               />
-              <label htmlFor={item.id}>{item.attributes.title}</label>
+              <label htmlFor={index}>{item}</label>
             </div>
           ))}
         </div>

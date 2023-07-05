@@ -10,7 +10,7 @@ export default function Home() {
       <Slider />
       <FeaturedProducts type="featured" />
       <Categories />
-      <FeaturedProducts type="trending" />
+      <FeaturedProducts type="trend" />
       <Contact />
     </div>
   );

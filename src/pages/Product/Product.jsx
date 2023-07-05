@@ -9,45 +9,37 @@ import { useDispatch } from "react-redux";
 import { addproduct } from "../../redux/cartReducer";
 
 export default function Product() {
-  const productId = parseInt(useParams().id);
+  const productId = useParams().id;
   const [selectedImg, setSelectedImg] = useState();
   const [quantity, setQuantity] = useState(1);
-  const [test, setTest] = useState(false);
   const dispatch = useDispatch();
-  const { data, loading, error } = useFetch(
-    `/products/${productId}?populate=*`
-  );
+  const { data, loading, error } = useFetch(`/products/find/${productId}`);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
     <div className="product">
-      {loading ? (
+      {error ? (
+        "somthing went wrong"
+      ) : loading ? (
         "loading"
       ) : (
         <>
           <div className="left">
             <div className="images">
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img1?.data?.attributes.url
-                }
+                src={PF + data?.img?.[0]}
                 alt=""
                 onClick={(e) => setSelectedImg(e.target.src)}
               />
               <img
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img2?.data?.attributes?.url
-                }
+                src={PF + data?.img?.[1]}
                 alt=""
                 onClick={(e) => setSelectedImg(e.target.src)}
               />
-              {test && (
+
+              {data?.img?.[2] && (
                 <img
-                  src={
-                    process.env.REACT_APP_UPLOAD_URL +
-                    data?.attributes?.img3?.data?.attributes?.url
-                  }
+                  src={PF + data?.img?.[2]}
                   alt=""
                   onClick={(e) => setSelectedImg(e.target.src)}
                 />
@@ -55,20 +47,15 @@ export default function Product() {
             </div>
 
             <img
-              src={
-                selectedImg
-                  ? selectedImg
-                  : process.env.REACT_APP_UPLOAD_URL +
-                    data?.attributes?.img1?.data?.attributes?.url
-              }
+              src={selectedImg ? selectedImg : PF + data?.img?.[0]}
               alt=""
               className="mainImg"
             />
           </div>
           <div className="right">
-            <h1>{data?.attributes?.title}</h1>
-            <span className="price">$ {data?.attributes?.newPrice}</span>
-            <p>{data?.attributes?.desc}</p>
+            <h1>{data?.title}</h1>
+            <span className="price">$ {data?.newPrice}</span>
+            <p>{data?.desc}</p>
             <div className="guantity">
               <button
                 onClick={(e) =>
@@ -87,11 +74,11 @@ export default function Product() {
               onClick={() =>
                 dispatch(
                   addproduct({
-                    id: data.id,
-                    title: data.attributes.title,
-                    desc: data.attributes.desc,
-                    price: data.attributes.newPrice,
-                    image: data.attributes.img1.data.attributes.url,
+                    id: data._id,
+                    title: data.title,
+                    desc: data.desc,
+                    price: data.newPrice,
+                    image: data.img[0],
                     quantity,
                   })
                 )

@@ -4,9 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import ProductSkeleton from "../ProductSkeleton/ProductSkeleton";
 
 export default function FeaturedProducts({ type }) {
-  const { data, loading, error } = useFetch(
-    `/products?populate=*&[filters][type][$eq]=${type}`
-  );
+  const { data, loading, error } = useFetch(`/products?${type}=true`);
 
   return (
     <div className="featured">
@@ -29,7 +27,7 @@ export default function FeaturedProducts({ type }) {
             <ProductSkeleton />
           </>
         ) : (
-          data.map((item) => <Card item={item} key={item.id} />)
+          data.map((item) => <Card item={item} key={item._id} />)
         )}
       </div>
     </div>

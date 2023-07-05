@@ -8,7 +8,7 @@ export default function Categories() {
         <div className="row">
           <img src="image/women2-category.jpg" alt="" />
           <button>
-            <Link className="link" to="/products/1">
+            <Link className="link" to="/products/women">
               Women
             </Link>
           </button>
@@ -16,7 +16,7 @@ export default function Categories() {
         <div className="row">
           <img src="image/bag-category.jpg" alt="" />
           <button>
-            <Link className="link" to="/products/1">
+            <Link className="link" to="/products/women">
               Bags
             </Link>
           </button>
@@ -26,7 +26,7 @@ export default function Categories() {
         <div className="row">
           <img src="/image/men-styles-3.jpg" alt="" />
           <button>
-            <Link className="link" to="/products/1">
+            <Link className="link" to="/products/men">
               Men
             </Link>
           </button>
@@ -38,7 +38,7 @@ export default function Categories() {
             <div className="row">
               <img src="image/footwear.jpg" alt="" />
               <button>
-                <Link className="link" to="/products/4">
+                <Link className="link" to="/products/shoes-accessory">
                   Shoes
                 </Link>
               </button>
@@ -48,7 +48,7 @@ export default function Categories() {
             <div className="row">
               <img src="image/acc-collection1.jpg" alt="" />
               <button>
-                <Link className="link" to="/products/4">
+                <Link className="link" to="/products/shoes-accessory">
                   Accessories
                 </Link>
               </button>
@@ -56,9 +56,9 @@ export default function Categories() {
           </div>
         </div>
         <div className="row">
-          <img src="image/kids collection4.jpg" alt="" />
+          <img src="image/kidsCollection4.jpg" alt="" />
           <button>
-            <Link className="link" to="/products/3">
+            <Link className="link" to="/products/kids">
               Children
             </Link>
           </button>

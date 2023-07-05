@@ -1,20 +1,30 @@
+import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import Card from "../Card/Card";
 import ProductSkeleton from "../ProductSkeleton/ProductSkeleton";
 import "./List.scss";
 
 export default function List({ catId, maxPrice, priceFilter, subCatSelected }) {
-  const { data, loading, error } = useFetch(
-    `/products?populate=*&filters[categories][id][$eq]=${catId}${subCatSelected.map(
-      (item) => `&filters[sub_categories][id][$eq]=${item}`
-    )}&filters[newPrice][$lte]=${maxPrice}&sort=newPrice:${priceFilter}`
-  );
-  console.log(maxPrice);
-  console.log(data);
+  const { data, loading, error } = useFetch(`/products?category=${catId}`);
+  const [products, setProducts] = useState(data);
+  console.log(subCatSelected);
+  useEffect(() => {
+    setProducts(data);
+    /*subCatSelected &&
+      setProducts(
+        products?.filter((item) =>
+          subCatSelected.map((f) => item.subCategories.includes(f))
+        )
+      );
+
+    maxPrice && setProducts(products?.filter((item) => item.price <= maxPrice));*/
+  }, [data, maxPrice, subCatSelected, products]);
 
   return (
     <div className="list">
-      {loading ? (
+      {error ? (
+        "somthing went wrong"
+      ) : loading ? (
         <>
           <ProductSkeleton />
           <ProductSkeleton />
@@ -22,7 +32,7 @@ export default function List({ catId, maxPrice, priceFilter, subCatSelected }) {
           <ProductSkeleton />
         </>
       ) : (
-        data?.map((item) => <Card item={item} key={item.id} />)
+        products?.map((item) => <Card item={item} key={item._id} />)
       )}
     </div>
   );

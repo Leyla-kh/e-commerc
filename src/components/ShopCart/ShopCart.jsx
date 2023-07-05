@@ -6,6 +6,7 @@ import { useState } from "react";
 import Paypal from "../Paypal/Paypal";
 
 export default function ShopCart({ setOpen }) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
   const totalPrice = () => {
@@ -25,10 +26,10 @@ export default function ShopCart({ setOpen }) {
         <>
           <div className="item" id={item.id}>
             <div className="itemDetail">
-              <img src={process.env.REACT_APP_UPLOAD_URL + item.image} alt="" />
+              <img src={PF + item.image} alt="" />
               <div className="info">
                 <h2>{item.title}</h2>
-                <p>{item.desc?.substring(0, 30)}</p>
+
                 <div className="price">
                   {item.quantity} x ${item.price}
                 </div>

@@ -17,22 +17,22 @@ export default function Navbar() {
       <div className="wrapper">
         <div className="left">
           <div className="item">
-            <Link className="link" to="/products/2">
+            <Link className="link" to="/products/men">
               Men
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/products/2">
+            <Link className="link" to="/products/women">
               Women
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/products/3">
+            <Link className="link" to="/products/kids">
               Children
             </Link>
           </div>
           <div className="item">
-            <Link className="link" to="/products/4">
+            <Link className="link" to="/products/shoes-accessory">
               Shoes & Accessories
             </Link>
           </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
             <PersonOutlineIcon className="icon" />
             <FavoriteBorderIcon className="icon" />
             <div className="cardIcon" onClick={(e) => setOpen(!open)}>
-              <ShoppingCartOutlinedIcon className="icon" />
+              <ShoppingCartOutlinedIcon className="icon pointer" />
               <span className="shoppingBadge">{products.length}</span>
             </div>
           </div>

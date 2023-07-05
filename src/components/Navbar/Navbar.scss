@@ -47,6 +47,9 @@
         .cardIcon {
           display: flex;
           position: relative;
+          .pointer {
+            cursor: pointer;
+          }
 
           .shoppingBadge {
             font-size: 10px;
