@@ -6,5 +6,5 @@ import axios from "axios";
 }); */
 
 export const makeRequest = axios.create({
-  baseURL: "https://mystore-api.onrender.com/api",
+  baseURL: "https://mystore-api-tkef.onrender.com/api",
 });
