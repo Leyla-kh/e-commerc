@@ -17,6 +17,7 @@
       left: 5px;
       z-index: 3;
       font-weight: 500;
+      font-size: 15px;
       color: tomato;
     }
 
@@ -44,11 +45,10 @@
     gap: 20px;
     h3 {
       font-size: 11px;
-
-      &:first-child {
-        color: gray;
-        text-decoration: line-through;
-      }
+    }
+    .oldPrice {
+      color: gray;
+      text-decoration: line-through;
     }
   }
 }

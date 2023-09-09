@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
@@ -6,12 +6,12 @@ import "./Products.scss";
 
 export default function Products() {
   const catId = useParams().id;
-  const [maxPrice, setMaxPrice] = useState(1000);
+  const [maxPrice, setMaxPrice] = useState(500);
   const [priceFilter, setPriceFilter] = useState("desc");
   const [subCatSelected, setSubCatSelected] = useState([]);
-
   const { data, loading, error } = useFetch(`/categories?category=${catId}`);
   const subs = data[0]?.subCategories;
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -33,7 +33,7 @@ export default function Products() {
               <input
                 type="checkbox"
                 id={index}
-                value={index}
+                value={item}
                 onChange={handleChange}
               />
               <label htmlFor={index}>{item}</label>
@@ -47,7 +47,7 @@ export default function Products() {
             <input
               type="range"
               min={0}
-              max={1000}
+              max={500}
               onChange={(e) =>
                 setMaxPrice(e.target.value > 0 ? e.target.value : 1)
               }
@@ -80,7 +80,7 @@ export default function Products() {
         </div>
       </div>
       <div className="right">
-        <img className="catImg" src="/image/women-style-1.jpg" alt="" />
+        <img className="catImg" src={PF + data[0]?.img} alt="" />
         <List
           catId={catId}
           maxPrice={maxPrice}
